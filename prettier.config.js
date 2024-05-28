@@ -11,4 +11,6 @@ function defineConfig(config) {
 export default defineConfig({
   arrowParens: 'avoid',
   singleQuote: true,
+
+  plugins: ['prettier-plugin-tailwindcss'],
 });
