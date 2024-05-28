@@ -29,7 +29,7 @@ export function Header() {
   ];
 
   return (
-    <header>
+    <header className="mb-10 shadow">
       <div className="container mx-auto flex h-16 w-full items-center justify-between">
         <a className="font-minecraft flex items-center gap-3 text-xl" href="/">
           <img className="inline-block h-10" src={logo} alt="Blueprint Logo" />
