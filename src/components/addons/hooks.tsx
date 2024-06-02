@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { type Addon, getAddons } from '../../api/addons';
+import { useState } from 'react';
+import { type Addon } from '../../api/addons';
 import { type Modloader } from '../../globals/modloader';
 
 export interface AddonFilters {
@@ -7,8 +7,7 @@ export interface AddonFilters {
   version?: string | undefined;
 }
 
-export function useAddons() {
-  const [addons, setAddons] = useState<Addon[]>([]);
+export function useAddons(addons: Addon[]) {
   const [filters, setFilters] = useState<AddonFilters>({});
 
   const filteredAddons = addons
@@ -27,10 +26,6 @@ export function useAddons() {
         .reverse(),
     ),
   ];
-
-  useEffect(() => {
-    getAddons().then(items => setAddons(items));
-  }, []);
 
   function filterLoader(loader: AddonFilters['loader']) {
     setFilters(currentFilters => {

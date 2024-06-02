@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import clipboard from '../assets/clipboard.webp';
 import coupling from '../assets/minecart_coupling.webp';
 import logo from '../assets/logo.webp';
@@ -40,7 +41,7 @@ export function Header() {
           <ul className="flex items-center gap-5">
             {links.map(link => (
               <li key={link.url}>
-                <a className="flex gap-2" href={link.url}>
+                <Link className="flex gap-2" to={link.url}>
                   <img
                     className="inline-block h-6"
                     src={link.icon}
@@ -49,7 +50,7 @@ export function Header() {
                   />
 
                   <span>{link.title}</span>
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
