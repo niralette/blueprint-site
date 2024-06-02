@@ -1,13 +1,9 @@
 import { type Addon } from '../../api/addons';
 import neoforgeLogo from '../../assets/neoforge_46h.png';
+import { modloaders as allModloaders } from '../../globals/modloader';
 import { DevinsBadge } from '../DevinsBadge';
-import { useAddons } from './hooks';
 
-const MODLOADERS = ['neoforge', 'forge', 'fabric', 'quilt'] as const;
-
-export function AddonList() {
-  const { addons } = useAddons();
-
+export function AddonList({ addons }: { addons: Addon[] }) {
   return (
     <div>
       <h2 className="sr-only">Addons</h2>
@@ -24,7 +20,7 @@ export function AddonList() {
 }
 
 export function ArticleCard({ addon }: { addon: Addon }) {
-  const modloaders = MODLOADERS.filter(modloader =>
+  const modloaders = allModloaders.filter(modloader =>
     addon.categories.includes(modloader),
   );
 
