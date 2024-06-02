@@ -1,6 +1,5 @@
 import { type Addon } from '../../api/addons';
 import neoforgeLogo from '../../assets/neoforge_46h.png';
-import { modloaders as allModloaders } from '../../globals/modloader';
 import { DevinsBadge } from '../DevinsBadge';
 
 export function AddonList({ addons }: { addons: Addon[] }) {
@@ -20,10 +19,6 @@ export function AddonList({ addons }: { addons: Addon[] }) {
 }
 
 export function ArticleCard({ addon }: { addon: Addon }) {
-  const modloaders = allModloaders.filter(modloader =>
-    addon.categories.includes(modloader),
-  );
-
   const url = `https://modrinth.com/mod/${addon.slug}`;
 
   return (
@@ -40,7 +35,7 @@ export function ArticleCard({ addon }: { addon: Addon }) {
 
       <div className="mb-2">
         <ul className="flex gap-2">
-          {modloaders.map(modloader => (
+          {addon.modloaders.map(modloader => (
             <li key={modloader}>
               {modloader === 'neoforge' ? (
                 <img

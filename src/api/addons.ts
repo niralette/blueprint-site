@@ -1,4 +1,9 @@
 import { z } from 'zod';
+import { type Modloader, modloaders } from '../globals/modloader';
+
+function isModloader(value: string): value is Modloader {
+  return modloaders.includes(value as Modloader);
+}
 
 const AddonSchema = z
   .object({
@@ -22,6 +27,7 @@ const AddonSchema = z
       downloads: addon.addon_downloads,
       followers: addon.addon_followers,
       icon: addon.addon_icon_url,
+      modloaders: addon.addon_categories.filter(isModloader),
       name: addon.addon_name,
       id: addon.addon_project_id,
       shortDescription: addon.addon_short_descriptions,

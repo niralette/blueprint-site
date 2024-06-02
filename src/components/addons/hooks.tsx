@@ -13,7 +13,7 @@ export function useAddons() {
 
   const filteredAddons = addons
     .filter(addon =>
-      filters.loader ? addon.categories.includes(filters.loader) : true,
+      filters.loader ? addon.modloaders.includes(filters.loader) : true,
     )
     .filter(addon =>
       filters.version ? addon.versions.includes(filters.version) : true,
